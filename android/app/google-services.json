@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1083211018671",
+    "project_id": "gkwithakhtarmalik",
+    "storage_bucket": "gkwithakhtarmalik.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083211018671:android:3c1745ec64335582b47f5a",
+        "android_client_info": {
+          "package_name": "com.example.gkwithakhtarmalik"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfwoX7aw90WmIODwJxydY-tnn3EyuRccM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
