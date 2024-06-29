@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gkwithakhtarmalik/Helper/widthHeight.dart';
+import 'package:gkwithakhtarmalik/Services/authService.dart';
+import 'package:gkwithakhtarmalik/views/signuppage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,14 +11,57 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var courseslist = [
+    "assets/images/courses/course.jpg",
+    "assets/images/courses/course1.jpg",
+    "assets/images/courses/course2.jpg",
+    "assets/images/courses/course3.jpg",
+    "assets/images/courses/course4.jpg",
+    "assets/images/courses/course5.jpg",
+    "assets/images/courses/course6.jpg",
+    "assets/images/courses/course7.jpg",
+    "assets/images/courses/course8.jpg",
+  ];
+
+  var enterprenuerlist = [
+    "assets/images/enterprenuer/enterprenuer.jpg",
+    "assets/images/enterprenuer/enter2.jpg",
+  ];
+  final AuthService auth = AuthService();
   @override
   Widget build(BuildContext context) {
     final height = getScreenHeight(context);
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
         centerTitle: true,
         title: const Text('GK With Akhtar Malik'),
+      ),
+      drawer: Drawer(
+        child: Column(
+          children: <Widget>[
+            SizedBox(height: height * 0.030),
+            ListTile(
+              leading: const Icon(Icons.logout),
+              title: const Text(
+                "LogOut",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              onTap: () async {
+                await auth.signOut();
+                Navigator.pop(context);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SignUpScreen(),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
           child: Padding(
@@ -122,15 +167,16 @@ class _HomePageState extends State<HomePage> {
               width: double.infinity,
               height: height * .19,
               child: Card(
-                color: Colors.blueAccent,
                 elevation: 5,
                 shape: RoundedRectangleBorder(
                   borderRadius:
                       BorderRadius.circular(12), // Example height * 0.012
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.all(16), // Example height * 0.016
-                  child: Center(child: Text('Card Content')),
+                child: Padding(
+                  padding: const EdgeInsets.all(2), // Example height * 0.016
+                  child: Image.asset(
+                      "assets/images/enterprenuer/enterpreneur.jpg",
+                      fit: BoxFit.cover),
                 ),
               ),
             ),
@@ -141,15 +187,17 @@ class _HomePageState extends State<HomePage> {
               width: double.infinity,
               height: height * .19,
               child: Card(
-                color: Colors.blue,
                 elevation: 5,
                 shape: RoundedRectangleBorder(
                   borderRadius:
                       BorderRadius.circular(12), // Example height * 0.012
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.all(16), // Example height * 0.016
-                  child: Center(child: Text('Card Content')),
+                child: Padding(
+                  padding: const EdgeInsets.all(2), // Example height * 0.016
+                  child: Image.asset(
+                    "assets/images/enterprenuer/enter2.jpg",
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ),
@@ -174,7 +222,9 @@ class _HomePageState extends State<HomePage> {
                   mainAxisSpacing: 8.0,
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  children: List.generate(7, (index) {
+                  children: List.generate(courseslist.length, (index) {
+                    var course = courseslist[index];
+                    print(course);
                     return Card(
                       color: Colors.blueGrey,
                       elevation: 5,
@@ -183,7 +233,12 @@ class _HomePageState extends State<HomePage> {
                       ),
                       child: Padding(
                         padding: EdgeInsets.all(height * 0.016),
-                        child: Center(child: Text('Card ${index + 1}')),
+                        child: Center(
+                          child: Image.asset(
+                            course,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                     );
                   }),

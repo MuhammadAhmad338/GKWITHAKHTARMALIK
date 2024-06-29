@@ -1,8 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api
-import 'package:flutter/material.dart';
-import 'package:gkwithakhtarmalik/Helper/widthHeight.dart';
-import 'package:provider/provider.dart';
 import '../Services/authService.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:gkwithakhtarmalik/Helper/widthHeight.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -15,7 +15,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
   bool _isLoading = false;
 
   void _signUp() async {
