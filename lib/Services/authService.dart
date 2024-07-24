@@ -25,6 +25,15 @@ class AuthService with ChangeNotifier {
     }
   }
 
+  void signInWithApi() async {
+    try {
+      // Signin with the api
+      notifyListeners();
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
   Future<void> signUp(String email, String password) async {
     try {
       UserCredential userCredential = await auth.createUserWithEmailAndPassword(

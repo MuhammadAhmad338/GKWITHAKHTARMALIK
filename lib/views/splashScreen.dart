@@ -14,8 +14,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacementNamed('/signup');
+    Timer(const Duration(seconds: 4), () {
+      Navigator.of(context).pushReplacementNamed('/home');
     });
   }
 
@@ -27,9 +27,10 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "GKWITHAKHTARMALIK",
-              style: TextStyle(fontWeight: FontWeight.bold),
+            Text(
+              "GK WITH AKHTAR MALIK",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, fontSize: height * 0.012),
             ),
             SizedBox(height: height * 0.020),
             Text('Welcome to GK', style: TextStyle(fontSize: height * 0.024)),

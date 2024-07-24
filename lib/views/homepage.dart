@@ -44,32 +44,75 @@ class _HomePageState extends State<HomePage> {
       drawer: Drawer(
         child: Column(
           children: <Widget>[
-            SizedBox(height: height * 0.030),
+            SizedBox(height: height * 0.055),
+            CircleAvatar(
+              radius: height * 0.05, // Adjust the radius as needed
+              backgroundImage: const AssetImage(
+                  "assets/images/user.png"), // URL of the avatar image
+            ),
+            SizedBox(height: height * 0.020),
             ListTile(
-              leading: const Icon(Icons.abc_rounded),
-              title: const Text(
-                "View Courses",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              onTap: () async {},
+                title: const Text(
+                  "View Courses",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                onTap: () async {
+                  Navigator.of(context).pushReplacementNamed('/');
+                }),
+            SizedBox(
+              height: height * 0.005,
             ),
             ListTile(
-              leading: const Icon(Icons.logout),
-              title: const Text(
-                "LogOut",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              onTap: () async {
-                await auth.signOut();
-                Navigator.pop(context);
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SignUpScreen(),
+                title: const Text(
+                  "View Quiz",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
                   ),
-                );
-              },
+                ),
+                onTap: () async {
+                  Navigator.of(context).pushReplacementNamed('/');
+                }),
+            SizedBox(
+              height: height * 0.005,
             ),
+            ListTile(
+                title: const Text(
+                  'VideoConference',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                onTap: () async {
+                  Navigator.of(context).pushReplacementNamed('/');
+                }),
+            Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                    vertical: 16.0), // Add padding to match ListTile's padding
+                child: TextButton.icon(
+                  icon: const Icon(Icons.logout),
+                  label: const Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
+                    child: Text(
+                      "LogOut",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors
+                        .red, // This sets the button's text and icon color
+                  ),
+                  onPressed: () async {
+                    await auth.signOut();
+                    Navigator.pop(context);
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SignUpScreen(),
+                      ),
+                    );
+                  },
+                ))
           ],
         ),
       ),

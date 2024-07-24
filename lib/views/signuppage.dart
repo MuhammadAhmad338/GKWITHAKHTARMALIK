@@ -49,7 +49,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     final height = getScreenHeight(context);
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(height * 0.020),
+        padding: EdgeInsets.all(height * 0.050),
         child: Form(
           key: _formKey,
           child: Column(

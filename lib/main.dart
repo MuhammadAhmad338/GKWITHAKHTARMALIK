@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gkwithakhtarmalik/views/splashScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:gkwithakhtarmalik/Helper/routes.dart';
-import 'package:gkwithakhtarmalik/views/homepage.dart';
 import 'package:gkwithakhtarmalik/firebase_options.dart';
 import 'package:gkwithakhtarmalik/Services/authService.dart';
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Comfortaa',
       ),
-      home: const HomePage(),
+      home: const SplashScreen(),
       initialRoute: Routes.splash,
       onGenerateRoute: Routes.generateRoute,
     );
