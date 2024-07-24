@@ -28,7 +28,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
-        // Set the default font family for the app
         fontFamily: 'Comfortaa',
       ),
       home: const HomePage(),

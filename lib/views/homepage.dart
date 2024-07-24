@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:gkwithakhtarmalik/Helper/widthHeight.dart';
 import 'package:gkwithakhtarmalik/Services/authService.dart';
@@ -11,6 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final AuthService auth = AuthService();
   var courseslist = [
     "assets/images/courses/course.jpg",
     "assets/images/courses/course1.jpg",
@@ -20,14 +22,14 @@ class _HomePageState extends State<HomePage> {
     "assets/images/courses/course5.jpg",
     "assets/images/courses/course6.jpg",
     "assets/images/courses/course7.jpg",
-    "assets/images/courses/course8.jpg",
+    "assets/images/courses/course8.jpg"
   ];
 
   var enterprenuerlist = [
     "assets/images/enterprenuer/enterprenuer.jpg",
     "assets/images/enterprenuer/enter2.jpg",
   ];
-  final AuthService auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     final height = getScreenHeight(context);
@@ -43,6 +45,14 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: <Widget>[
             SizedBox(height: height * 0.030),
+            ListTile(
+              leading: const Icon(Icons.abc_rounded),
+              title: const Text(
+                "View Courses",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              onTap: () async {},
+            ),
             ListTile(
               leading: const Icon(Icons.logout),
               title: const Text(
@@ -224,7 +234,6 @@ class _HomePageState extends State<HomePage> {
                   shrinkWrap: true,
                   children: List.generate(courseslist.length, (index) {
                     var course = courseslist[index];
-                    print(course);
                     return Card(
                       color: Colors.blueGrey,
                       elevation: 5,

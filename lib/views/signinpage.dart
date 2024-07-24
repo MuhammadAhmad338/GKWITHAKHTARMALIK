@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:gkwithakhtarmalik/Helper/widthHeight.dart';
 import 'package:gkwithakhtarmalik/Services/authService.dart';
@@ -48,16 +48,16 @@ class _SignInScreenState extends State<SignInScreen> {
     final height = getScreenHeight(context);
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(height * 0.020),
+        padding: EdgeInsets.all(height * 0.040),
         child: Form(
           key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              const Text("GKWITHAKHTARMALIK",
-                  style: TextStyle(fontWeight: FontWeight.bold)),
-              SizedBox(height: height * 0.020),
+              const Text("GK WITH AKHTAR MALIK",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
+              SizedBox(height: height * 0.15),
               TextFormField(
                 controller: _emailController,
                 decoration: const InputDecoration(labelText: 'Email'),
