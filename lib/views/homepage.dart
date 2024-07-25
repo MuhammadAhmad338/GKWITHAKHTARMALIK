@@ -1,11 +1,15 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:gkwithakhtarmalik/Helper/widthHeight.dart';
+import 'package:gkwithakhtarmalik/Model/coursemodel.dart';
 import 'package:gkwithakhtarmalik/Services/authService.dart';
 import 'package:gkwithakhtarmalik/views/signuppage.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String type = "recorded";
+  const HomePage({
+    super.key,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -51,42 +55,47 @@ class _HomePageState extends State<HomePage> {
                   "assets/images/user.png"), // URL of the avatar image
             ),
             SizedBox(height: height * 0.020),
-            ListTile(
+            if (widget.type == SignInType.recorded.name) ...[
+              ListTile(
                 title: const Text(
                   "View Courses",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 onTap: () async {
-                  Navigator.of(context).pushReplacementNamed('/');
-                }),
-            SizedBox(
-              height: height * 0.005,
-            ),
-            ListTile(
+                  Navigator.of(context).popAndPushNamed('/course');
+                },
+              ),
+              SizedBox(height: height * 0.005),
+            ],
+            if (widget.type == SignInType.quizzes.name) ...[
+              ListTile(
                 title: const Text(
                   "View Quiz",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 onTap: () async {
-                  Navigator.of(context).pushReplacementNamed('/');
-                }),
-            SizedBox(
-              height: height * 0.005,
-            ),
-            ListTile(
+                  Navigator.of(context).popAndPushNamed('/quiz');
+                },
+              ),
+              SizedBox(height: height * 0.005),
+            ],
+            if (widget.type == SignInType.session.name) ...[
+              ListTile(
                 title: const Text(
                   'VideoConference',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 onTap: () async {
-                  Navigator.of(context).pushReplacementNamed('/');
-                }),
+                  Navigator.of(context).popAndPushNamed('/videoconference');
+                },
+              ),
+              SizedBox(height: height * 0.005),
+            ],
             Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 16.0,
-                    vertical: 16.0), // Add padding to match ListTile's padding
+                padding: EdgeInsets.symmetric(
+                    horizontal: height * 0.016,
+                    vertical: height *
+                        0.016), // Add padding to match ListTile's padding
                 child: TextButton.icon(
                   icon: const Icon(Icons.logout),
                   label: const Padding(

@@ -13,15 +13,16 @@ class _VideoConferenceState extends State<VideoConference> {
   Widget build(BuildContext context) {
     final height = getScreenHeight(context);
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(height: height * 0.0123),
-          const Text(
-            "Video Conference",
-            style: TextStyle(fontWeight: FontWeight.bold),
-          )
-        ],
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(height: height * 0.0123),
+            const Text(
+              "Video Conference",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
       ),
     );
   }
