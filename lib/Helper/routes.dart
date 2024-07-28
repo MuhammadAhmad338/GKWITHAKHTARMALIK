@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gkwithakhtarmalik/views/coursespage.dart';
 import 'package:gkwithakhtarmalik/views/homepage.dart';
+import 'package:gkwithakhtarmalik/views/lectureVideopage.dart';
+import 'package:gkwithakhtarmalik/views/lecturepage.dart';
 import 'package:gkwithakhtarmalik/views/quizespage.dart';
 import 'package:gkwithakhtarmalik/views/signinpage.dart';
 import 'package:gkwithakhtarmalik/views/signuppage.dart';
@@ -15,6 +17,8 @@ class Routes {
   static const String course = '/course';
   static const String quiz = '/quiz';
   static const String videoconference = '/videoconference';
+  static const String lectures = '/lectures';
+  static const String lectureVideo = '/lecturesvideo';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -32,6 +36,10 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const QuizesPage());
       case videoconference:
         return MaterialPageRoute(builder: (_) => const VideoConference());
+      case lectures:
+        return MaterialPageRoute(builder: (_) => const LecturePage());
+      case lectureVideo:
+        return MaterialPageRoute(builder: (_) => const VideoPlayerScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
