@@ -1,76 +1,31 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
-class VideoPlayerScreen extends StatefulWidget {
-  const VideoPlayerScreen({
-    Key? key,
-  }) : super(key: key);
+class YouTubeVideoScreen extends StatefulWidget {
+  const YouTubeVideoScreen({super.key});
 
   @override
-  _VideoPlayerScreenState createState() => _VideoPlayerScreenState();
+  State<YouTubeVideoScreen> createState() => _YouTubeVideoScreenState();
 }
 
-class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
-  late VideoPlayerController _controller;
-  bool _isError = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = VideoPlayerController.networkUrl(Uri.parse(
-        'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4'))
-      ..initialize().then((_) {
-        setState(() {}); // Update UI after initialization
-      }).catchError((error) {
-        setState(() {
-          _isError = true;
-        });
-        print("Error initializing video: $error");
-      });
-
-    _controller.addListener(() {
-      if (_controller.value.hasError) {
-        print("Video controller error: ${_controller.value.errorDescription}");
-        setState(() {
-          _isError = true;
-        });
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
+class _YouTubeVideoScreenState extends State<YouTubeVideoScreen> {
   @override
   Widget build(BuildContext context) {
+    const String videoUrl = 'https://www.youtube.com/watch?v=0pwpP2QOW9g';
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Lecture Video Player',
-            style: TextStyle(fontWeight: FontWeight.bold)),
-      ),
-      body: _isError
-          ? Text('Error loading video')
-          : _controller.value.isInitialized
-              ? AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
-                  child: VideoPlayer(_controller),
-                )
-              : const CircularProgressIndicator(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _controller.value.isPlaying
-                ? _controller.pause()
-                : _controller.play();
-          });
-        },
-        child: Icon(
-          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+        title: const Text(
+          'YouTube Video',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
+      ),
+      body: WebViewWidget(
+        controller: WebViewController()
+          ..setJavaScriptMode(JavaScriptMode.unrestricted)
+          ..loadRequest(Uri.parse(videoUrl)),
       ),
     );
   }

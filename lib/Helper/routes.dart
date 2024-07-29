@@ -39,7 +39,7 @@ class Routes {
       case lectures:
         return MaterialPageRoute(builder: (_) => const LecturePage());
       case lectureVideo:
-        return MaterialPageRoute(builder: (_) => const VideoPlayerScreen());
+        return MaterialPageRoute(builder: (_) => const YouTubeVideoScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
